@@ -149,6 +149,6 @@ pip-selfcheck.json
 
 # acrescimos pessoal
 Include/
-Script/
+Scripts/
 Lib/
 tcl/

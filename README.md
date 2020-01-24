@@ -27,8 +27,8 @@ configurando ambiente:
         virtualenv .  // cria uma virtualização na parta
 
     inicie o virtualenv
-        win: start ..\<pasta>\Script\activate
-
+        win: start ..\horta\Scripts\activate
+            
 
     instale os modulos Py
     pip install Flask
