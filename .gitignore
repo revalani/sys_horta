@@ -148,7 +148,7 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/virtualenv
 
 # acrescimos pessoal
-.Include/
-.Script/
-.Lib/
-.tcl/
+Include/
+Script/
+Lib/
+tcl/
