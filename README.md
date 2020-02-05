@@ -19,9 +19,10 @@ configurando ambiente:
         virtualenv .ENV  // cria uma virtualização na parta
 
     inicie o virtualenv
-        win: start ..\horta\Scripts\activate
+        win: start ..\horta\Scripts\activate.bat
         lix: source ..\Scripts\activate
-            
+
+
 
     instale os modulos Py
     pip install Flask // BSD 3-Clause "New" or "Revised" License

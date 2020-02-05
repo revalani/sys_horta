@@ -4,9 +4,11 @@ pendentes
 		estufa
 		sensor
 
-	mysql 
+	mysql linux
 		senha e server
 
+	factory de mysql pra sqlalquimy
+	modularizar
 	visual
 
 fazendo 

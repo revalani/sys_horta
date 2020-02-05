@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% block title%}Graficos{%endblock%}
+{% block content %}
+<p>no momento a data vai de 01 à 07/01/2020</p>
+<p>dados brutos com 1,5mim de diferemça</p>
+
+<form id="target">
+    <select name="estufa" id="estufa">
+        <option value="1" selected>1 - Não espesificano</option>
+        <option value="2">2 - Alface</option>
+        <option value="3">3 - Tomate</option>
+        <option value="4">4 - Rucula</option>
+        <option value="5">5 - Tomilho</option>
+    </select>
+    <select name="tipo_sensor" id="sensor">
+        <option value="termometro" selected>Termometro</option>
+        <option value="carbono_ar">co2</option>
+        <option value="Luximetro">Luximetro</option>
+    </select>
+    <input type="date" id="date" value="2020-01-01">
+    <input type="submit">
+    <!-- <button class="btnform">Consultar</button> -->
+</form>
+
+<table class="table-fill">
+    <thead>
+        <tr>
+            <th>Hora</th>
+            <th> Media/Hora</th>
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+
+    </tbody>
+</table>
+{% endblock %}

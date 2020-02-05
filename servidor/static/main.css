@@ -1,0 +1,25 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100); */
+
+/* *:not(path):not(g) {
+  color: hsla(210, 100%, 100%, 0.9) !important;
+  background: hsla(210, 100%, 50%, 0.5) !important;
+  outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+
+  box-shadow: none !important;
+} */
+/* 
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: auto;
+  text-rendering: optimizeLegibility;
+}
+
+
+.navbar {
+  background-color: rgb(200, 255, 200) !important;
+}
+
+.container-fluid>button {
+  background-color: rgb(146, 243, 146);
+} */

@@ -1,0 +1,211 @@
+/**
+* Demo Styles
+*/
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* *,
+*:before,
+  *:after {
+      box-sizing: inherit;
+    } */
+
+/* debug leyout */
+/* *:not(path):not(g) {
+          color: hsla(210, 100%, 100%, 0.9) !important;
+          background: hsla(210, 100%, 50%, 0.5) !important;
+          outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+        
+          box-shadow: none !important;
+        } */
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.navbar {
+    background-color: rgb(200, 255, 200) !important;
+}
+
+.container-fluid>button {
+    background-color: rgb(200, 255, 200);
+}
+
+/* .footer {
+    background-color: rgb(200, 255, 200) !important;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: .3rem 0rem 0rem 0rem;
+
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+} */
+
+footer.p {
+    margin-bottom: 0.5rem !important;
+}
+
+
+body {
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    font-size: 16px;
+    font-weight: auto;
+    text-rendering: optimizeLegibility;
+}
+
+/*** Table Styles **/
+
+div.table-title {
+    display: block;
+    margin: auto !important;
+    max-width: 5rem;
+    padding: 5px;
+    width: 100%;
+}
+
+.table-title h3 {
+    color: #fafafa;
+    font-size: .8rem;
+    font-weight: auto;
+    font-style: normal;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+
+.table-fill {
+    background: white;
+    border-radius: 3px;
+    border-collapse: collapse;
+    height: auto;
+    margin: auto;
+    margin-top: 2rem;
+    max-width: auto;
+    padding: 5px;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    animation: float 5s infinite;
+}
+
+th {
+    color: #D5DDE5;
+    ;
+    background: #1b1e24;
+    border-bottom: 4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+    font-size: 1.2rem;
+    font-weight: 100;
+    padding: 0.5rem;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align: middle;
+    text-align: center;
+}
+
+th:first-child {
+    border-top-left-radius: 3px;
+}
+
+th:last-child {
+    border-top-right-radius: 3px;
+    border-right: none;
+}
+
+tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom: 1px solid #C1C3D1;
+    color: #666B85;
+    font-size: 16px;
+    font-weight: normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+    text-align: center;
+}
+
+tr:hover td {
+    background: #4E5066;
+    color: #FFFFFF;
+    border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+    border-top: none;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+tr:nth-child(odd) td {
+    background: #EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+    background: #4E5066;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 3px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 3px;
+}
+
+td {
+    background: #FFFFFF;
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 18px;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+    border-right: 0px;
+}
+
+th.text-left {
+    text-align: left;
+}
+
+th.text-center {
+    text-align: center;
+}
+
+th.text-right {
+    text-align: right;
+}
+
+td.text-right {
+    text-align: right;
+}
+
+tbody.td {
+    text-align: center;
+}
+
+thead.tr {
+    text-align: center;
+}
