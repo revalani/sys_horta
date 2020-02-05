@@ -152,3 +152,5 @@ Include/
 Scripts/
 Lib/
 tcl/
+node_modules/
+.vscode

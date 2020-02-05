@@ -1,0 +1,68 @@
+
+
+# Licença MIT
+Uma licença permissiva curta e simples com condições que exigem apenas a preservação de direitos autorais e avisos de licença. Trabalhos licenciados, modificações e trabalhos maiores podem ser distribuídos sob termos diferentes e sem código fonte.
+
+$ Permissões
+    Uso comercial
+    Modificação
+    Distribuição
+    Uso privado
+
+$Limitações
+    Responsabilidade
+    garantia
+
+$Condições
+    Aviso de licença e direitos autorais
+
+// itens sob a licença
+chart.js
+normalize.css
+basscss
+jquery
+bootstrap
+
+
+# Licença Apache 2.0
+
+Uma licença permissiva cujas principais condições exigem a preservação de direitos autorais e avisos de licença. Os colaboradores fornecem uma concessão expressa de direitos de patente. Trabalhos licenciados, modificações e trabalhos maiores podem ser distribuídos sob termos diferentes e sem código fonte.
+
+$ Permissões
+    Uso comercial
+    Modificação
+    Distribuição
+    Uso de patentes
+    Uso privado
+
+$ Limitações
+    Uso da marca registrada
+    Responsabilidade
+    garantia
+
+$ Condições
+    Aviso de licença e direitos autorais
+    Mudanças de estado
+
+// itens sob a licença
+template base (MIT & Apache)
+    https://github.com/ampproject/amp.dev/tree/future/templates/websites/blog
+
+
+# Licença BSD 3-Cláusula "Nova" ou "Revisada"
+
+Uma licença permissiva semelhante à BSD 2-Clause License, mas com uma terceira cláusula que proíbe outros de usar o nome do projeto ou de seus colaboradores para promover produtos derivados sem o consentimento por escrito.
+
+$ Permissões
+    Uso comercial
+    Modificação
+    Distribuição
+    Uso privado
+$ Limitações
+    Responsabilidade
+    garantia
+$ Condições
+    Aviso de licença e direitos autorais
+
+// itens sob a licença
+Flask
