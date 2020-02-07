@@ -26,7 +26,9 @@ configurando ambiente:
 
     instale os modulos Py
     pip install Flask // BSD 3-Clause "New" or "Revised" License
-    pip install flask-bootstrap
+    pip install flask-bootstrap // ainda sem uso 
+    pip install mysql-connector
+    
 
 
 iniciando o servidor flask: 

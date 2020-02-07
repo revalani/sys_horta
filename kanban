@@ -7,16 +7,18 @@ pendentes
 	mysql linux
 		senha e server
 
-	factory de mysql pra sqlalquimy
+	factory de mysql pra SQL-Alquimy
+	Flask-bootstrap
 	modularizar
 	visual
-
-fazendo 
-	ler serial com py
 	pydronizando arquitetura do flaks
 		blueprints
 		organizando
 		git
+
+fazendo 
+	ler serial com py
+	grafico com chart.js
 
 feito
 	CRUD com flask

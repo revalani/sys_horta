@@ -4,9 +4,10 @@
 <p>no momento a data vai de 01 à 07/01/2020</p>
 <p>dados brutos com 1,5mim de diferemça</p>
 
-<form id="target">
+<div class="container">
+
     <select name="estufa" id="estufa">
-        <option value="1" selected>1 - Não espesificano</option>
+        <option value="1">1 - Não espesificano</option>
         <option value="2">2 - Alface</option>
         <option value="3">3 - Tomate</option>
         <option value="4">4 - Rucula</option>
@@ -15,22 +16,20 @@
     <select name="tipo_sensor" id="sensor">
         <option value="termometro" selected>Termometro</option>
         <option value="carbono_ar">co2</option>
-        <option value="Luximetro">Luximetro</option>
+        <option value="luximetro">Luximetro</option>
     </select>
     <input type="date" id="date" value="2020-01-01">
-    <input type="submit">
-    <!-- <button class="btnform">Consultar</button> -->
-</form>
+    <!-- <input type="submit"> -->
 
-<table class="table-fill">
-    <thead>
-        <tr>
-            <th>Hora</th>
-            <th> Media/Hora</th>
-        </tr>
-    </thead>
-    <tbody class="table-hover">
+    <button id="btnform">Consultar</button>
+</div>
 
-    </tbody>
-</table>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" /> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+
+<div class="chart" style=" height:40vh; width:80vw; align-content: center;">
+    <canvas id="myChart"></canvas>
+</div>
 {% endblock %}
