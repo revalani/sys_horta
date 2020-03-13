@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% block title%}Painel de Controle{%endblock%}
 {% block content %}
-<table class="table-fill">
+<!-- <table class="table-fill">
   <thead>
     <tr>
       <th>Estufa</th>
@@ -15,5 +15,40 @@
   <tbody class="table-hover">
 
   </tbody>
-</table>
-{% endblock %}
+</table> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header ">
+          <span class="card-text font-weight-bolder"> 1 - Alface</span>
+          <span class="float-right">Funcionando</span>
+        </div>
+        <div class="card-body row row-cols-2">
+          <div class="col">
+            <p class="card-text"><img class="icon" src="{{ url_for('static', filename='img/temp.svg')}}"></img>30 °c</p>
+            <p class="card-text"><img class="icon" src="{{ url_for('static', filename='img/sun.svg')}}"></img>15426 lux
+            </p>
+            <p class="card-text"><img class="icon" src="{{ url_for('static', filename='img/co2.svg')}}"></img>1023 ppm
+            </p>
+            <p class="card-text"><img class="icon" src="{{ url_for('static', filename='img/humidity.svg')}}"></img>89 %
+            </p>
+            <!-- <p class="card-text"><img class="icon"
+                src="{{ url_for('static', filename='img/fan.svg')}}"></img>Funcionando
+            </p> -->
+          </div>
+          <div class="col wrap">
+            <button type="button" class="btn  btn-md btn-block"><img class="icon"
+                src="{{ url_for('static', filename='img/chart-line.svg')}}"></img>Graficos</button>
+            <button type="button" class="btn  btn-md btn-block"><img class="icon"
+                src="{{ url_for('static', filename='img/table.svg')}}"></img>Tabelas</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {% endblock %}

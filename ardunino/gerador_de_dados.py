@@ -12,6 +12,7 @@ import time
 import json
 import ast
 import sys
+import serial
 from datetime import datetime, timedelta
 
 from BancodeDados import BancodeDados as bd
@@ -80,11 +81,12 @@ def insertSensorBanco(arquivo):
 
 def liveData():
     sql = "INSERT INTO `estufa_dado`(`id_estufa`, `tipo_sensor`, `dado_sensor`, `datatime`) VALUES (%s,%s,%s,%s)"
-    hora = datetime(2020, 2, 1, 6, 0, 0, 0)
+    hora = datetime.now()
 
     while True:
         time.sleep(1)
-        hora = (hora+timedelta(seconds=1))
+        hora = datetime.now()
+        # hora = (hora+timedelta(seconds=1))
         incersoes = []
 
         for y in {1, 2, 3, 4, 5}:
@@ -102,10 +104,22 @@ def liveData():
         print("Novo dado: "+str(hora))
 
 
-mycursor = BancodeDados()
+def ler_serial():
+    # while True:
+    #     time.sleep(1)
+    s = serial.Serial('COM3')
+    print(s.name)         # check which port was really used
+    s.write(b'hello')     # write a string
+    s.close()   
+        # res = s.read()
+    print(s.read())
+
+
+mycursor = bd()
 
 # arquivo = "dados.txt"
 # geradorDadoSensor(6000, "dados.txt")
 # insertSensorBanco(arquivo)
-
-# liveData()
+# ler_serial()
+liveData()
+    

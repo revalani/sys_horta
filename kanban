@@ -10,17 +10,23 @@ pendentes
 	factory de mysql pra SQL-Alquimy
 	Flask-bootstrap
 	modularizar
-	visual
+
+	visual	
+	datapiker decente >> https://uxsolutions.github.io/bootstrap-datepicker/
 	pydronizando arquitetura do flaks
 		blueprints
 		organizando
 		git
 
 fazendo 
+	conosulta para dashbord: media dados
+	grafico e periodos de exibição
+		grafico horarios(corrigir) modos: hora,dia, semana, mes
+	modal do 'ver mais'
 	ler serial com py
-	grafico com chart.js
 
 feito
+	
 	CRUD com flask
 	modelo ER 
 	BD
@@ -29,6 +35,5 @@ feito
 	idle arduino 
 	
 
-igor: colocar hora na bios  
 
-dead-line 20/02
+igor: colocar hora na bios  

@@ -28,7 +28,7 @@ configurando ambiente:
     pip install Flask // BSD 3-Clause "New" or "Revised" License
     pip install flask-bootstrap // ainda sem uso 
     pip install mysql-connector
-    
+    pip install pyserial
 
 
 iniciando o servidor flask: 
@@ -37,7 +37,9 @@ iniciando o servidor flask:
 
 
 
-
+paleta de cor green   
+    https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+    https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=4caf4f&secondary.color=00BFA5
 
 
 <!-- EXTRAS              -->

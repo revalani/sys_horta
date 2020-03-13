@@ -31,6 +31,17 @@ def consulta(consulta):
             print(x)
     return jsonify(res)
 
+@app.route('/statos_estufas/', methods=['GET'])
+def statos_estufas():
+    cursor = bd()
+
+    # estufas
+    cursor.execute("select id_estufa, cultura from estufa")
+    estufa = fortamaConsulta(cursor.fetchall())
+
+    return 0
+
+
 @app.route('/qlive/', methods=['GET'])
 def qlive():
     cursor = bd()
@@ -69,6 +80,8 @@ def qlive():
     return jsonify(dados)
 
 
+
+
 @app.route('/qgrafco/', methods=['get', 'post'])
 def qgrafco():
     a = (request.data).decode()
@@ -80,6 +93,7 @@ def qgrafco():
     estufa = a['estufa']
     tipo_sensor = a['sensor']
     date = a['data']
+    print(date)
 
     query = "SELECT id_estufa, tipo_sensor, ROUND(AVG(dado_sensor), 2) AS 'dado/hora', datatime FROM `estufa_dado` WHERE id_estufa ="+estufa+" and tipo_sensor = '"+tipo_sensor + \
         "' AND datatime between '"+date+" 00-00-00' and '"+date + \

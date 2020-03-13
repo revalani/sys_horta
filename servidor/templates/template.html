@@ -5,18 +5,26 @@
     <meta charset="utf-8">
     <title>{{titulo}}</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
 
     <script src="{{ url_for('static', filename='jquery-3.4.1.js')}}"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.min.js')}}"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.png')}}" type="image/png">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
         <div class="container-fluid">
-            <p class="h3">{{titulo}} </p>
+            <div style="display: flex;">
+                <img src="{{ url_for('static', filename='img/logo.png')}}" alt="logo"
+                    style="width: 4rem; height: 4rem;">
+                <p class="h4 titulo d-flex align-items-center">{{titulo}} </p>
+            </div>
+
+
             <button class="btn d-inline-block d-lg-none ml-auto  collapsed" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent">
                 <svg class="bi bi-list shadow-lg" width="1.5em" height="1.5em" viewBox="0 0 20 20" fill="currentColor"

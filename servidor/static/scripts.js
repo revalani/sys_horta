@@ -21,7 +21,7 @@ function criandoTabela() {
                 );
             }
             setTimeout(function () {
-                criandoTabela();
+                // criandoTabela();
             }, 1500);
         })
         .fail(function (jqXHR, textStatus, msg) {
@@ -34,7 +34,9 @@ function criandoTabela() {
 function grafico() {
     var estufa = $('#estufa').val();
     var sensor = $('#sensor').val();
+    // var data = $('#datepicker').val();
     var data = $('#date').val();
+    console.log(data);
 
     var hora = [];
     var valor = [];
@@ -55,15 +57,15 @@ function grafico() {
             $('.chart').append('<canvas id="myChart"></canvas>');
 
             for (var i = 0; i < dado.length; i++) {
-                // var d = new Date(dado[i][3]);
-                // var d = d.getHours();
-                // hora.push(d);
-                hora.push(new Date(dado[i][3]));
+                var d = new Date(dado[i][3]);
+                var d = d.getHours();
+                hora.push(d);
+                // hora.push(new Date(dado[i][3]));
                 // hora.push(dado[i][3]);
                 valor.push(dado[i][2]);
             }
 
-            console.log(hora);
+            console.log(hora, valor);
 
             var margem = 0.03;
             var maxDado = parseInt(Math.max.apply(Math, valor) * (1 + margem));
@@ -78,6 +80,7 @@ function grafico() {
                     datasets: [{
                         label: sensor,
                         data: valor,
+                        lineTension: 0,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.1)'
                         ],
@@ -110,21 +113,25 @@ function grafico() {
                             //     unit: 'hour',
                             //     unitStepSize: 0.5,
                             //     round: 'hour',
-                            //     tooltipFormat: "h:mm:ss a",
+                            //     tooltipFormat: "HH",
                             //     displayFormats: {
-                            //         hour: 'MMM D, h:mm A'
+                            //         hour: 'HH:mm'
                             //     }
                             // }
                         }],
                         yAxes: [{
+                            gridLines: {
+                                color: '#000000f',
+                                borderDash: [2, 5],
+                            },
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Valores'
+                                labelString: 'Valores (média/hora)'
                             },
                             ticks: {
-                                max: maxDado,
-                                min: minDado
+                                // max: maxDado,
+                                // min: minDado
                             }
                         }]
                     }
@@ -133,18 +140,30 @@ function grafico() {
         });
 }
 
+// function h_table() {
+//     if ($(window).width() < 570) {
+//         $('thead').empty();
+//         $('thead').append('<tr><th>Estufa</th><th>Cultura</th><th>Temp</th><th>co2</th><th>Umidade</th><th>Lux</th></tr>');
+//     }
+// }
+
 $(document).ready(function () {
     var url = $(location).attr('pathname');
 
     if (url == '/graficos') {
         grafico();
-
+        $('#datepicker').datepicker({});
     }
     if (url == '/') {
-        criandoTabela();
+        // criandoTabela();
     }
+    // h_table();
+
 });
 
+// $(window).resize(function () {
+//     h_table()
+// });
 $('#btnform').click(function () {
     grafico();
 });
