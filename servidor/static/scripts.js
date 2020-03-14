@@ -29,6 +29,78 @@ function criandoTabela() {
         });
 };
 
+function cards_lista() {
+    var estufas = [];
+
+    $.ajax({
+            url: "/consulta/SELECT id_estufa FROM estufa",
+            type: 'get',
+            contentType: "application/json",
+            dataType: 'json'
+        })
+        .done(function (data) {
+            data.forEach(element => {
+                estufas.push(element[0]);
+            });
+
+            criando_cards(estufas);
+
+        })
+        .fail(function (jqXHR, textStatus, msg) {
+            console.log((jqXHR, '\n', msg, '\n', textStatus));
+        });
+};
+
+function criando_cards(estufas) {
+    // estufas = [1];
+    estufas.forEach(element => {
+        $.ajax({
+                url: "/status_estufas/" + element,
+                type: 'get',
+                contentType: "application/json",
+                dataType: 'json'
+            })
+            .done(function (data) {
+
+                console.log(element, data);
+
+                estufa_n = data[0][0];
+                estufa_cultura = data[0][1];
+                estufa_status = data[0][2];
+
+                // extencao = ['termometro'
+                //     'u': 'umidade_ar', 'c': 'carbono_ar', 'l': 'luximetro'
+                // ]
+
+                var co2 = '';
+                var lux = '';
+                var temp = '';
+                var umi = '';
+
+                data.forEach(linha => {
+                    console.log(linha[3]);
+                    if (linha[3] == 'luximetro') {
+                        lux = '<p class="card-text"><span class="icon-sun"></span>' + linha[5] + ' lux</p>';
+                    } else if (linha[3] == 'termometro') {
+                        temp = '<p class="card-text"><span class="icon-temp"></span>' + linha[5] + ' °c</p>';
+                    } else if (linha[3] == 'co2') {
+                        co2 = '<p class="card-text"><span class="icon-co2"></span>' + linha[5] + ' ppm</p>';
+                    } else if (linha[3] == 'umidade_ar') {
+                        umi = '<p class="card-text"><span class="icon-humidity"></span>' + linha[5] + ' %</p>';
+                    }
+                });
+
+                estufa_color = estufa_status;
+
+                // console.log(estufa_color + ' - ' + typeof (estufa_status));
+                $('#terreno_cards').append(
+                    $('<div class="col-lg-4"><div class="card ' + estufa_color + ' mb-3"><div class="card-header "><span class="card-text font-weight-bolder">' + estufa_n + ' - ' + estufa_cultura + '</span><span class="float-right">' + estufa_status + '</span></div><disv class="card-body row row-cols-2"><div class="col">' + temp + lux + umi + co2 + '</div><div class="col wrap"><button type="button" data-estufa="' + estufa_n + '"class="btn  btn-md btn-block" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="icon-chart-line"></span>Mais Detalhes</button><button class="btn btn-md btn-block" style="cursor: not-allowed;" disabled>Camera</button></div></div></div></div>'));
+            })
+            .fail(function (jqXHR, textStatus, msg) {
+                console.log((jqXHR, '\n', msg, '\n', textStatus));
+            });
+    });
+}
 
 
 function grafico() {
@@ -36,6 +108,10 @@ function grafico() {
     var sensor = $('#sensor').val();
     // var data = $('#datepicker').val();
     var data = $('#date').val();
+
+    var estufa = '1';
+    var sensor = 'termometro';
+    var data = '01-01-2020';
     console.log(data);
 
     var hora = [];
@@ -140,26 +216,26 @@ function grafico() {
         });
 }
 
-// function h_table() {
-//     if ($(window).width() < 570) {
-//         $('thead').empty();
-//         $('thead').append('<tr><th>Estufa</th><th>Cultura</th><th>Temp</th><th>co2</th><th>Umidade</th><th>Lux</th></tr>');
-//     }
-// }
-
 $(document).ready(function () {
     var url = $(location).attr('pathname');
 
+    grafico();
     if (url == '/graficos') {
-        grafico();
-        $('#datepicker').datepicker({});
+        // $('#datepicker').datepicker({});
     }
     if (url == '/') {
-        // criandoTabela();
+        cards_lista();
     }
-    // h_table();
+    // $('[data-toggle="popover"]').popover();
+    setTimeout(function () {
+        $('[data-estufa="1"]').click()
+    }, 1000);
 
 });
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})
 
 // $(window).resize(function () {
 //     h_table()

@@ -1,25 +1,29 @@
-
 pendentes
-	forms de ADM
-		estufa
-		sensor
 
-	mysql linux
-		senha e server
+	#operacional
+		mysql linux
+			senha e server
+		forms de ADM
+			estufa
+			sensor
+	
+	#padrao
+		factory de mysql pra SQL-Alquimy
+		Flask-bootstrap
+		modularizar
+		pydronizando arquitetura do flaks
+			blueprints
+			organizando
+			git
 
-	factory de mysql pra SQL-Alquimy
-	Flask-bootstrap
-	modularizar
+	#visual
+		datapiker decente >> https://uxsolutions.github.io/bootstrap-datepicker/
 
-	visual	
-	datapiker decente >> https://uxsolutions.github.io/bootstrap-datepicker/
-	pydronizando arquitetura do flaks
-		blueprints
-		organizando
-		git
+	#erros
+		consulta 'media/hora' do painel esta com erro na media
+		erro timezone do timestamp no update dos dados de sensor 
 
 fazendo 
-	conosulta para dashbord: media dados
 	grafico e periodos de exibição
 		grafico horarios(corrigir) modos: hora,dia, semana, mes
 	modal do 'ver mais'
@@ -27,6 +31,7 @@ fazendo
 
 feito
 	
+	conosulta para dashbord: media dados
 	CRUD com flask
 	modelo ER 
 	BD

@@ -1,25 +1,11 @@
 {% extends "template.html" %}
 {% block title%}Painel de Controle{%endblock%}
 {% block content %}
-<!-- <table class="table-fill">
-  <thead>
-    <tr>
-      <th>Estufa</th>
-      <th>Cultura</th>
-      <th>Temperatura</th>
-      <th>co2</th>
-      <th>Umidade Ar</th>
-      <th>Luximetro</th>
-    </tr>
-  </thead>
-  <tbody class="table-hover">
-
-  </tbody>
-</table> -->
-
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-4">
+
+  <div class="row" id="terreno_cards">
+
+    <!-- <div class="col-lg-4">
       <div class="card text-white bg-primary mb-3">
         <div class="card-header ">
           <span class="card-text font-weight-bolder"> 1 - Alface</span>
@@ -34,9 +20,9 @@
             </p>
             <p class="card-text"><img class="icon" src="{{ url_for('static', filename='img/humidity.svg')}}"></img>89 %
             </p>
-            <!-- <p class="card-text"><img class="icon"
+            <p class="card-text"><img class="icon"
                 src="{{ url_for('static', filename='img/fan.svg')}}"></img>Funcionando
-            </p> -->
+            </p>
           </div>
           <div class="col wrap">
             <button type="button" class="btn  btn-md btn-block"><img class="icon"
@@ -47,8 +33,78 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
 
+    <!-- <div class="col-lg-4">
+      <div class="card ' + estufa_color + ' mb-3">
+        <div class="card-header "><span class="card-text font-weight-bolder">' + estufa_n + ' - ' + estufa_cultura +
+            '</span><span class="float-right">' + estufa_status + '</span></div>
+        <disv class="card-body row row-cols-2">
+          <div class="col">
+            <p class="card-text"><span class="icon-temp"></span>' + temp + ' °c</p>
+            <p class="card-text"><span class="icon-sun"></span>' + lux + ' lux</p>
+            <p class="card-text"><span class="icon-humidity"></span>' + umi + ' %</p>
+          </div>
+          <div class="col wrap"><button type="button" data-estufa="' + estufa_n + '" class="btn  btn-md btn-block"
+              data-toggle="modal" data-target=".bd-example-modal-xl"><span class="icon-chart-line"></span>Mais
+              Detalhes</button><button class="btn btn-md btn-block" style="cursor: not-allowed;"
+              disabled>Camera</button></div>
+      </div>
+    </div>
+  </div> -->
   </div>
 
-  {% endblock %}
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title" id="titulo_modal"># - @</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body container-fluid">
+          <div class="row">
+            <div class="col">
+
+              <p class="card-text text-success" id="estufa_status"> </p>
+              <p class="card-text" id="estufa_temp"><span class="icon-temp"></span>sss </p>
+              <p class="card-text" id="estufa_lux"><span class="icon-sun"></span>aaasd </p>
+              <p class="card-text" id="estufa_umi_ar"><span class="icon-humidity"></span> sasdas</p>
+              <p class="card-text" id="estufa_bateria"><span class="icon-bateria"></span>70%</p>
+
+              <p class="card-text" id="estufa_co2"><span class="icon-co2"></span>Gás Carbônico indesponivel</p>
+              <p class="card-text" id="estufa_ph"><span class="icon-medidor-de-ph"></span>pHmetro indesponivel</p>
+              <p class="card-text" id="estufa_umi_s"><span class="icon-grama"></span>Umidade solo indesponivel</p>
+              <p class="card-text" id="estufa_vento"><span class="icon-fan"></span>Anemometro indesponivel</p>
+            </div>
+            <div class="col-lg-8 ">
+              <div class="justify-content-end">
+                <div class="btn-group" role="group" aria-label="Third group">
+                  <button type="button" class="btn btn-primary">Agora</button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-primary">Hora</button>
+                  <button type="button" class="btn btn-primary">Dia</button>
+                  <button type="button" class="btn btn-primary">Semana</button>
+                  <button type="button" class="btn btn-primary">Mes</button>
+                </div>
+
+              </div>
+              <div class="chart" style="align-content: center;">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

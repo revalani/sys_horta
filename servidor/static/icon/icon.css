@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?x0lnec');
+  src: url('fonts/icomoon.eot?x0lnec#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?x0lnec') format('truetype'),
+    url('fonts/icomoon.woff?x0lnec') format('woff'),
+    url('fonts/icomoon.svg?x0lnec#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bateria:before {
+  content: "\e90a";
+}
+
+.icon-medidor-de-ph:before {
+  content: "\e908";
+}
+
+.icon-grama:before {
+  content: "\e909";
+}
+
+.icon-chart-line:before {
+  content: "\e900";
+}
+
+.icon-co2:before {
+  content: "\e901";
+}
+
+.icon-fan:before {
+  content: "\e902";
+}
+
+.icon-home-run:before {
+  content: "\e903";
+}
+
+.icon-humidity:before {
+  content: "\e904";
+}
+
+.icon-sun:before {
+  content: "\e905";
+}
+
+.icon-table:before {
+  content: "\e906";
+}
+
+.icon-temp:before {
+  content: "\e907";
+}

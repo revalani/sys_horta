@@ -8,7 +8,9 @@ DHT dht(DHTPIN, DHTTYPE);
 void setup() 
 {
   Serial.begin(9600);
-  Serial.println("#iniciando sensores");
+  //Serial.print("{'e': 1,'t':00,'u':00,'l':00,'c':00,'m':0}");
+
+  // m = 0 : iniciando sistema
 
   dht.begin();
 
@@ -18,12 +20,10 @@ void setup()
 void loop() 
 {
   
-  delay(5000);
-  float t = dht.readTemperature();
-  float h = dht.readHumidity();
-
-  float l = random(10000, 20000)/10;
-  float c = random(8000, 14000)/10;
+  delay(1000);
+  float t = random(250, 600)/10.0;
+  float h = random(500, 1000)/10.0;
+  float l = random(10000, 20000)/10.0;
   
 //   modelo {'e': 1, 't': 27.8, 'u': 79, 'l': 14537, 'c': 835}
   
@@ -33,8 +33,6 @@ void loop()
     Serial.print(h);
     Serial.print(",'l':");
     Serial.print(l);
-    Serial.print(",'c':");
-    Serial.print(c);
     Serial.println("}");
 
 }
