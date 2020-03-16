@@ -1,0 +1,1 @@
+python3 ./ardunino/gerador_de_dados.py; python3 ./server/app.py 

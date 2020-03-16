@@ -1,0 +1,5 @@
+DHT11:
+============================
+Adafruit_Sensor-master
+DHT-sensor-library-master
+============================

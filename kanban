@@ -23,6 +23,12 @@ pendentes
 		consulta 'media/hora' do painel esta com erro na media
 		erro timezone do timestamp no update dos dados de sensor 
 
+
+	#rpi
+		ssh rpi
+		dns github
+
+
 fazendo 
 	grafico e periodos de exibição
 		grafico horarios(corrigir) modos: hora,dia, semana, mes
@@ -41,4 +47,5 @@ feito
 	
 
 
-igor: colocar hora na bios  
+
+troqui o local do bd em xampp>config>my.ini

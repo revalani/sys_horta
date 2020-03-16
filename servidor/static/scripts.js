@@ -1,28 +1,68 @@
-// tabela = [];
+var modal_loop = 0;
+var modal_estufa = 1;
+var modal_sensor = 'temperatura';
 
-function criandoTabela() {
-    $.ajax({
-            url: "qlive/",
+function criandoTabela(estufa) {
+    request = $.ajax({
+            url: "qlive/" + estufa,
             type: 'get',
             contentType: "application/json",
-            dataType: 'json'
+            dataType: 'json',
+            timeout: 1000
         })
         .done(function (data) {
-            // console.log(data);
-            $('.table-hover').empty();
-            for (var i = 0; i < data.length; i++) {
-                $('.table-hover').append($('<tr>')
-                    .append($('<td/>').val(data[i]['estufa']).text(data[i]['estufa']))
-                    .append($('<td />').val(data[i]['cultura']).text(data[i]['cultura']))
-                    .append($('<td/>').val(data[i]['termometro']).text(data[i]['termometro']))
-                    .append($('<td/>').val(data[i]['co2']).text(data[i]['co2']))
-                    .append($('<td/>').val(data[i]['umidade_ar']).text(data[i]['umidade_ar']))
-                    .append($('<td/>').val(data[i]['luximetro']).text(data[i]['luximetro']))
-                );
+            console.log(data);
+
+
+            // $(".modal-content").css("background-color", "#fff");
+            // $('#titulo-modal').val('').text('');
+            // $('#estufa-temp').val('').text('');
+            // $('#estufa-lux').val('').text('');
+            // $('#estufa-umi-ar').val('').text('');
+            // $('#estufa-co2').val('').text('');
+
+            // $('#estufa-ph').val('').text('s/d');
+            // $('#estufa-umi-s').val('').text('s/d');
+            // $('#estufa-vento').val('').text('s/d');
+
+            data.forEach(element => {
+                if (element['co2']) {
+                    $('#estufa-co2').val(element['co2'] + " ppm").text(element['co2'] + " ppm");
+                }
+                if (element['luximetro']) {
+                    $('#estufa-lux').val(element['luximetro'] + " lux").text(element['luximetro'] + " lux");
+                }
+                if (element['termometro']) {
+                    $('#estufa-temp').val(element['termometro'] + "°c").text(element['termometro'] + "°c");
+                }
+                if (element['umidade_ar']) {
+                    $('#estufa-umi-ar').val(element['umidade_ar'] + "%").text(element['umidade_ar'] + "%");
+                }
+                if (estufa == 1) {
+                    $('#estufa-co2').val("s/d").text("s/d");
+
+                } else {
+                    $('#estufa-temp').val("s/d").text("s/d");
+                    $('#estufa-umi-ar').val("s/d").text("s/d");
+                    $('#estufa-lux').val("s/d").text("s/d");
+                    $('#estufa-co2').val("s/d").text("s/d");
+                    $(".modal-content").css("background-color", "#fffdc5");
+                    console.log(element['co2']);
+                }
+
+
+                $('#estufa-bateria').val(element['bateria'] + "%").text(element['bateria'] + "%");
+                $('#estufa-status').val(element['status']).text(element['status']);
+                var titulo = estufa + ' - ' + element['cultura'];
+                $('#titulo-modal').val(titulo).text(titulo);
+            });
+
+            if (modal_loop) {
+                setTimeout(function () {
+                    criandoTabela(estufa);
+                }, 1500);
             }
-            setTimeout(function () {
-                // criandoTabela();
-            }, 1500);
+
         })
         .fail(function (jqXHR, textStatus, msg) {
             console.log((jqXHR, '\n', msg, '\n', textStatus));
@@ -62,7 +102,7 @@ function criando_cards(estufas) {
             })
             .done(function (data) {
 
-                console.log(element, data);
+                // console.log(element, data);
 
                 estufa_n = data[0][0];
                 estufa_cultura = data[0][1];
@@ -76,9 +116,10 @@ function criando_cards(estufas) {
                 var lux = '';
                 var temp = '';
                 var umi = '';
+                var bat = '';
 
                 data.forEach(linha => {
-                    console.log(linha[3]);
+                    // console.log(linha);
                     if (linha[3] == 'luximetro') {
                         lux = '<p class="card-text"><span class="icon-sun"></span>' + linha[5] + ' lux</p>';
                     } else if (linha[3] == 'termometro') {
@@ -88,13 +129,16 @@ function criando_cards(estufas) {
                     } else if (linha[3] == 'umidade_ar') {
                         umi = '<p class="card-text"><span class="icon-humidity"></span>' + linha[5] + ' %</p>';
                     }
+
+                    bat = linha[6] + '%<span class="icon-bateria"></span>';
+
                 });
 
                 estufa_color = estufa_status;
 
                 // console.log(estufa_color + ' - ' + typeof (estufa_status));
                 $('#terreno_cards').append(
-                    $('<div class="col-lg-4"><div class="card ' + estufa_color + ' mb-3"><div class="card-header "><span class="card-text font-weight-bolder">' + estufa_n + ' - ' + estufa_cultura + '</span><span class="float-right">' + estufa_status + '</span></div><disv class="card-body row row-cols-2"><div class="col">' + temp + lux + umi + co2 + '</div><div class="col wrap"><button type="button" data-estufa="' + estufa_n + '"class="btn  btn-md btn-block" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="icon-chart-line"></span>Mais Detalhes</button><button class="btn btn-md btn-block" style="cursor: not-allowed;" disabled>Camera</button></div></div></div></div>'));
+                    $('<div class="col-lg-4"><div class="card ' + estufa_color + ' mb-3"><div class="card-header "><span class="card-text font-weight-bolder">' + estufa_n + ' - ' + estufa_cultura + '</span><span class="float-right">' + bat + estufa_status + '</span></div><disv class="card-body row row-cols-2"><div class="col">' + temp + lux + umi + co2 + '</div><div class="col wrap"><button type="button" onclick="modal_bt(' + estufa_n + ')" class="btn  btn-md btn-block" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="icon-chart-line"></span>Mais Detalhes</button><button class="btn btn-md btn-block" style="cursor: not-allowed;" disabled>Camera</button></div></div></div></div>'));
             })
             .fail(function (jqXHR, textStatus, msg) {
                 console.log((jqXHR, '\n', msg, '\n', textStatus));
@@ -103,21 +147,32 @@ function criando_cards(estufas) {
 }
 
 
-function grafico() {
-    var estufa = $('#estufa').val();
-    var sensor = $('#sensor').val();
+function grafico(estufa, sensor, periodo) {
+    // var estufa = $('#estufa').val();
+    // var sensor = $('#sensor').val();
+    // var data = $('#date').val();
     // var data = $('#datepicker').val();
-    var data = $('#date').val();
 
-    var estufa = '1';
-    var sensor = 'termometro';
-    var data = '01-01-2020';
-    console.log(data);
+    var estufa = estufa;
+    var sensor = sensor;
+    var data = Date.now();
+
+    if (periodo == NaN || periodo == undefined) {
+        periodo = 'dia';
+    }
+
+    if (data == NaN || data == undefined) {
+        data = Date();
+    }
+
 
     var hora = [];
     var valor = [];
 
-    $.ajax({
+
+    console.log(estufa, sensor, data, periodo);
+
+    request = $.ajax({
             url: "qgrafco/",
             type: 'post',
             contentType: "application/json",
@@ -125,29 +180,55 @@ function grafico() {
             data: JSON.stringify({
                 'estufa': estufa,
                 'sensor': sensor,
-                'data': data
+                'data': data,
+                'periodo': periodo
             }),
         })
         .done(function (dado) {
+
             $('.chart').empty();
             $('.chart').append('<canvas id="myChart"></canvas>');
 
-            for (var i = 0; i < dado.length; i++) {
-                var d = new Date(dado[i][3]);
-                var d = d.getHours();
+            for (var i = 0; i < dado.length - 1; i++) {
+                var d = moment(dado[i][3]);
+
+
+                if (periodo == "hora") {
+                    d = d.format('HH:mm');
+                }
+                if (periodo == "dia") {
+                    d = d.format('HH:00');
+                }
+                if (periodo == "semana") {
+                    d = d.format('DD/MM');
+                }
+                if (periodo == "mes") {
+                    d = d.format('DD/MM');
+                }
                 hora.push(d);
                 // hora.push(new Date(dado[i][3]));
                 // hora.push(dado[i][3]);
                 valor.push(dado[i][2]);
             }
 
-            console.log(hora, valor);
+            // console.log(dado[dado.length - 1]);
+            datai = moment(dado[dado.length - 1][0]).format("DD/MM");
+            dataf = moment(dado[dado.length - 1][0]).format("DD/MM");
 
-            var margem = 0.03;
+
+            var margem = 0.01;
             var maxDado = parseInt(Math.max.apply(Math, valor) * (1 + margem));
             var minDado = parseInt(Math.min.apply(Math, valor) * (1 - margem));
 
             /* plot graficos*/
+            l_legenda = {
+                'hora': 'minuto',
+                'dia': 'hora',
+                'semana': 'dia',
+                'mes': 'dia'
+            }
+
+
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'line',
@@ -181,7 +262,7 @@ function grafico() {
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Horário'
+                                labelString: 'De ' + dataf + ' a ' + datai + ' - tempo em ' + l_legenda[periodo]
                             },
                             distribution: 'linear',
                             // type: "time",
@@ -203,7 +284,7 @@ function grafico() {
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Valores (média/hora)'
+                                labelString: 'Valores (média/' + l_legenda[periodo] + ')'
                             },
                             ticks: {
                                 // max: maxDado,
@@ -219,7 +300,6 @@ function grafico() {
 $(document).ready(function () {
     var url = $(location).attr('pathname');
 
-    grafico();
     if (url == '/graficos') {
         // $('#datepicker').datepicker({});
     }
@@ -227,19 +307,80 @@ $(document).ready(function () {
         cards_lista();
     }
     // $('[data-toggle="popover"]').popover();
+
     setTimeout(function () {
         $('[data-estufa="1"]').click()
     }, 1000);
 
 });
 
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
+
+$('.bd-example-modal-xl').on('hidden.bs.modal', function (e) {
+    $(".modal-content").css("background-color", "#fff");
+    $('#titulo-modal').val('').text('');
+    $('#estufa-temp').val('').text('');
+    $('#estufa-lux').val('').text('');
+    $('#estufa-umi-ar').val('').text('');
+    $('#estufa-co2').val('').text('');
+    console.log('ssdasda');
+    modal_loop = 0;
+    modal_estufa = 1;
+    modal_sensor = 'termometro';
+
+    // criandoTabela(1);
+    // grafico(1, 'dia');
+    // var xhr;
+
+    // var fn = function () {
+    //     if (xhr && xhr.readyState != 4) {
+    //         xhr.abort();
+    //     }
+    //     xhr = $.ajax({
+    //         success: function (data) {
+    //             //do something
+    //         }
+    //     });
+    // };
+
+    // var interval = setInterval(fn, 500);
+    // $('option:selected', this).attr('data-estufa');
+    // $('#myInput').trigger('focus')
 })
 
-// $(window).resize(function () {
-//     h_table()
-// });
-$('#btnform').click(function () {
-    grafico();
+
+function modal_bt(estufa) {
+    // $('.modal').empty();
+    modal_loop = 1;
+    modal_estufa = estufa
+    grafico(estufa, modal_sensor, 'hora');
+
+    $(".modal-content").css("background-color", "#fff");
+    $('#titulo-modal').val('').text('');
+    $('#estufa-temp').val('').text('');
+    $('#estufa-lux').val('').text('');
+    $('#estufa-umi-ar').val('').text('');
+    $('#estufa-co2').val('').text('');
+
+    $('#estufa-ph').val('').text('s/d');
+    $('#estufa-umi-s').val('').text('s/d');
+    $('#estufa-vento').val('').text('s/d');
+    setTimeout(function () {
+        criandoTabela(estufa);
+
+    }, 150);
+}
+
+$('#hora').click(function () {
+    // $('#titulo-modal').val();
+
+    grafico(modal_estufa, modal_sensor, 'hora');
+});
+$('#dia').click(function () {
+    grafico(modal_estufa, modal_sensor, 'dia');
+});
+$('#semana').click(function () {
+    grafico(modal_estufa, modal_sensor, 'semana');
+});
+$('#mes').click(function () {
+    grafico(modal_estufa, modal_sensor, 'mes');
 });

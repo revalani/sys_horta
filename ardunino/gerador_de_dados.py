@@ -72,48 +72,61 @@ def insertSensorBanco(arquivo):
     print("dados gerados por geradorDadoSensor")
 
 
-def liveData():
+def criar_Data():
+    delete = "DELETE FROM `estufa_dado`"
+    mycursor.execute(delete)
+    mycursor.commit()
     sql = "INSERT INTO `estufa_dado`(`id_estufa`, `tipo_sensor`, `dado_sensor`, `datatime`) VALUES (%s,%s,%s,%s)"
-    hora = datetime.now()
+    hora = datetime(2020, 3, 16, 15, 10, 0, 0)
+    # hora = datetime(2020, 3, 16, 10, 57, 0, 0)
 
-    while True:
-        time.sleep(2)
-        hora = datetime.now()
-        # hora = (hora+timedelta(seconds=1))
+    # ti = datetime.datetime.now()
+    n = 0
+    while datetime(2020, 2, 14, 0, 0, 0, 0) < hora:
+        # time.sleep(2)
+        # hora = datetime.now()
+        if datetime(2020, 3, 15, 0, 0, 0, 0) < hora:
+            hora = (hora-timedelta(seconds=300))
+
+        else:
+            hora = (hora-timedelta(seconds=660))
+
         insercao = []
 
         for y in {1, 2, 3, 4, 5}:
 
             if y in {4, 5}:
-                insercao.append((y, 'termometro', 0))
-                insercao.append((y, 'umidade_ar', 0))
-                insercao.append((y, 'luximetro', 0))
-                insercao.append((y, 'co2', 0))
+                insercao.append((y, 'termometro', 0, hora))
+                insercao.append((y, 'umidade_ar', 0, hora))
+                insercao.append((y, 'luximetro', 0, hora))
+                insercao.append((y, 'co2', 0, hora))
 
             elif y in {2}:
                 insercao.append(
-                    (y, 'termometro', (random.randint(-10, 200)+300)/4))
+                    (y, 'termometro', (random.randint(-10, 200)+300)/4, hora))
                 insercao.append(
-                    (y, 'umidade_ar', random.randint(-15, 15)+80))
+                    (y, 'umidade_ar', random.randint(-15, 15)+80, hora))
                 insercao.append(
-                    (y, 'luximetro', random.randint(-1800, 1800)+14000))
+                    (y, 'luximetro', random.randint(-18, 10)+14, hora))
                 insercao.append(
-                    (y, 'co2', random.randint(-300, 300)+1000))
+                    (y, 'co2', random.randint(-300, 300)+1000, hora))
 
             else:
                 insercao.append(
-                    (y, 'termometro', (random.randint(-100, 200)+300)/10))
+                    (y, 'termometro', (random.randint(-100, 200)+300)/10, hora))
                 insercao.append(
-                    (y, 'umidade_ar', random.randint(-15, 15)+80))
+                    (y, 'umidade_ar', random.randint(-5, 7)+90, hora))
                 insercao.append(
-                    (y, 'luximetro', random.randint(-1800, 1800)+14000))
-                insercao.append(
-                    (y, 'co2', random.randint(-300, 300)+1000))
+                    (y, 'luximetro', random.randint(-1800, 1800)+14000, hora))
+                # insercao.append(
+                #     (y, 'co2', random.randint(-300, 300)+1000, hora))
 
         mycursor.executemany(sql, insercao)
         mycursor.commit()
+        n = n+1
 
-        print("Novo dado: "+str(hora))
+    # ti = datetime.datetime.now()-ti
+    print(str(n*23)+"linhas em"+str(''))
 
 
 def inserir_arduino_banco(entrada: dict):
@@ -191,5 +204,5 @@ mycursor = bd()
 # arquivo = "dados.txt"
 # geradorDadoSensor(2000, "dados.txt")
 # insertSensorBanco(arquivo)
-ler_serial()
-# liveData()
+# ler_serial()
+criar_Data()

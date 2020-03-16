@@ -10,29 +10,39 @@ no momento há todos essas partes nesse repositorio
 <h1> Instalando </h1>
 
 configurando ambiente:
-    
-     instale virtualenv:
+    copiar diretorio ( instalar git):
+        git clone https://github.com/revalani/hortas.git
+
+     instale virtualenv:,,
         win: pip install virtualenv
-        lix: sudo apt install virtualenv
+        lixm pip install virtualenv
 
     defina p ambiente virtualenv 
-        virtualenv .ENV  // cria uma virtualização na parta
+        virtualenv .  // cria uma virtualização na pasta
+
+    bd mariaDB(my_sql)
+        linux
+            sudo apt-get update
+            sudo apt-get install mariadb-server-10.0
+            
+        mysql -u username -p database_name < file.sql
 
     inicie o virtualenv
-        win: start ..\horta\Scripts\activate.bat
-        lix: source ..\Scripts\activate
-
-
+        win: start .\Scripts\activate.bat
+        lix: source .\bin\activate
 
     instale os modulos Py
-    pip install Flask // BSD 3-Clause "New" or "Revised" License
-    pip install flask-bootstrap // ainda sem uso 
-    pip install mysql-connector
-    pip install pyserial
+        pip install Flask 
+        pip install mysql-connector
+
+        pip install flask-bootstrap // ainda sem uso 
+        pip install pyserial
+
 
 
 iniciando o servidor flask: 
-    start ..\horta\servidor\py app.py
+    start (activate virtualenv) .\horta\servidor\py app.py
+    start   .\horta\servidor\py app.py
 
 
 
@@ -50,3 +60,4 @@ chartjs.io
 
 arduino linux 
     https://arduino.stackexchange.com/questions/21215/first-time-set-up-permission-denied-to-usb-port-ubuntu-14-04
+
