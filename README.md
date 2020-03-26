@@ -1,63 +1,154 @@
-# hortas
-Projeto pra consultoria em agricultura
+# Sys horta :seedling: :herb:
 
-sensoriamento das estufas
-transmição e armazenagem dos dados
-vizualização e gerenciamento no browser
+**Projeto pra consultoria em agricultura**
+- sensoriamento das estufas
+- transmissão e armazenagem dos dados
+- visualização e gerenciamento no browser
+- *propor insight, reparos e auxilio para o operador*
 
-no momento há todos essas partes nesse repositorio
+### Instalando ambiente :computer:
+- configurando ambiente:
+  - `git clone https://github.com/revalani/sys_horta.git`
 
-<h1> Instalando </h1>
+- instale [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html):
+  - win: `pip install virtualenv`
+  - lin: `python3 -m virtualenv`
+  
+- inicie o ambiente virtual :gear:
+	- `virtualenv .` **ou** `python3 virtualenv .`  
 
-configurando ambiente:
-    copiar diretorio ( instalar git):
-        git clone https://github.com/revalani/hortas.git
+- bd mariaDB( MySQL) [tutorial](https://linuxize.com/post/how-to-install-mariadb-on-ubuntu-18-04/) 
+Linux:
+	- `sudo apt-get update`
+	- `sudo apt-get install mariadb-server`
+	- `sudo systemctl status mariadb` //inicial automaticamente
+	- `sudo mysql_secure_installation` // 
+	- `mysql -u root -p < bd.sql` //importa o BD
 
-     instale virtualenv:,,
-        win: pip install virtualenv
-        lixm pip install virtualenv
+### instalando dependencias :file_folder:
+- inicie o virtualenv
+   - win: `start .\Scripts\activate.bat`
+    - lin: `source .\bin\activate`
+- instale os modulos Py
+  - `pip install Flask`
+  - `pip install mysql-connector`
+  - `pip install mysql-connector-python`
+  - `pip install pyserial`
+  - `pip install flask-bootstrap` // ainda sem uso  
 
-    defina p ambiente virtualenv 
-        virtualenv .  // cria uma virtualização na pasta
+- :rocket: iniciando o servidor flask (dentro da virtualização):
+  - win :`start init.bat`
+  - lin:  `./init.sh`
 
-    bd mariaDB(my_sql)
-        linux
-            sudo apt-get update
-            sudo apt-get install mariadb-server-10.0
-            
-        mysql -u username -p database_name < file.sql
+## referencias 
+paleta de cor verde: #66bb6a
+- https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+- https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=4caf4f&secondary.color=00BFA5`
 
-    inicie o virtualenv
-        win: start .\Scripts\activate.bat
-        lix: source .\bin\activate
+design de referencia:
+- [material.io](https://material.io/)
+  -	[https://material.io/develop/web/](https://material.io/develop/web/)
+  -	[https://github.com/material-components/material-components-web](https://github.com/material-components/material-components-web)
+- [Design Fluent](https://www.microsoft.com/design/fluent/)
+   - https://www.microsoft.com/design/fluent/#/web
 
-    instale os modulos Py
-        pip install Flask 
-        pip install mysql-connector
-
-        pip install flask-bootstrap // ainda sem uso 
-        pip install pyserial
-
-
-
-iniciando o servidor flask: 
-    start (activate virtualenv) .\horta\servidor\py app.py
-    start   .\horta\servidor\py app.py
-
-
-
-
-paleta de cor green   
-    https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-    https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=4caf4f&secondary.color=00BFA5
-
-
-<!-- EXTRAS              -->
-graficos:
-http://gionkunz.github.io/chartist-js/index.html // MIT
-chartjs.io
+ https://www.smashingmagazine.com/2009/07/lessons-from-swiss-style-graphic-design/
 
 
-arduino linux 
-    https://arduino.stackexchange.com/questions/21215/first-time-set-up-permission-denied-to-usb-port-ubuntu-14-04
+
+## kanban
+
+#### pendentes
+- Site comercial 
+    - hospedagem
+    - WordPress
+    - [slick-slide](https://kenwheeler.github.io/slick/)
+ 
+- Operacional
+   - parametros do sistema
+      - cpu, energia?, memoria
+	- forms de ADM
+		- estufa
+		- sensor
+	- dados gerais
+	- mostradores
+	- alertas
+	- indicadores
+	- modularizar interface:
+	   - facilita manutenção e teste 
+
+- Padrão
+	- organizando
+		- estruturas de dados: dicionario
+	- Flask-bootstrap
+	- modularizar
+	- PYdronizando arquitetura do flask
+	  - blueprints
+	- flask factory de mysql pra SQLAlchemy
+
+- Visual
+  - refazer
+  - ver dinamica 
+  - datapiker decente >> https://uxsolutions.github.io/bootstrap-datepicker/
+  - graficos
+	 - graficos para relatorio: mesclar temperatura, humidade e pressao ( tipo grafico meteorologico)
+			colocar curva modelo ou curva comparatoria com o clime local
+	- d3.js
+	-	https://wattenberger.com/blog/d3#intro
+				https://c3js.org/gettingstarted.html
+
+- RPI
+	- ssh
+	- arquivos de automação e configuração
+		- atualizar readme 
+	- fazer um imagem do sistema
+
+- Banco
+  - rotina 
+      - médias por periodos| economia de dado & processo
+				http://www.bosontreinamentos.com.br/mysql/mysql-rotinas-armazenadas-funcoes-create-function-33/
+				https://www.devmedia.com.br/stored-procedures-e-functions-no-mysql-com-phpmyadmin/30837
+				https://ilovecode.com.br/conheca-algumas-rotinas-que-facilitam-nosso-desenvolvimento-no-mysql/
+  - repensar nas tabelas
+    - estufa_dados: uma linha para todos sensores {'e': 1, 't': 27.8, 'u': 79, 'l': 14537, 'c': 835} > uma linha no bd
+    - tabela delta
+		
+- Erros
+	- consulta 'media/hora' do painel esta com erro na media
+		erro timezone do timestamp no update dos dados de sensor 
+
+### fazendo 
+
+
+### feito	
+- grafico e periodos de exibição
+  - grafico horarios(corrigir) modos: hora,dia, semana, mes
+-	modal do 'ver mais'
+-	ler serial com py
+-	conosulta para dashbord: media dados
+-	CRUD com flask
+-	modelo ER
+-	BD
+-	env no ubunto
+
+- Operacional
+  -	documentação parcial
+  -	idle arduino
+
+- RPI
+	- wifi
+	- dns
+
+- Padrão
+
+- Visual
+
+- Banco
+
+- Site Comercial
+
+- Operacional
+
+- Erros
+
 
