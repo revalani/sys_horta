@@ -3,19 +3,16 @@
 */
 
 :root {
-    --cor_primaria: #66bb6a;
-    --cor_primaria_dark: #338a3e;
-    --cor_primaria_dense: #203B22;
-    --cor_primaria_light: #98ee99;
+    --cor_verde_primaria: #66bb6a;
+    --cor_verde_primaria_dark: #338a3e;
+    --cor_verde_primaria_dense: #203B22;
+    --cor_verde_primaria_light: #98ee99;
     --cor_bg: #f3f8ed;
 
-
-
-    --cor_azul_ok: #29b6f6;
+    --cor_azul_ok: #4F94F0;
     --cor_vermelho_problema: #ef5350;
-    --cor_amarelo_alerta: #ffca28;
+    --cor_amarelo_alerta: #F0C74F;
     --cor_cinza_incapaz: #6c757d;
-
 
     --fonte_family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -58,21 +55,21 @@ body {
     size: 1.5rem; */
     font-size: 1.5rem;
     margin-right: 0.8rem;
-    color: var(--cor_primaria_dense);
+    color: var(--cor_verde_primaria_dense);
 }
 
 /* .icon-btn {
     width: 1rem;
     height: 1rem;
     margin-right: 0.6rem;
-    color: var(--cor_primaria_dense);
+    color: var(--cor_verde_primaria_dense);
 } */
 
 .card {
-    background-color: var(--cor_primaria_light) !important;
+    background-color: var(--cor_verde_primaria_light) !important;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     border-radius: .8rem;
-    /* color: var(--cor_primaria_dense); */
+    /* color: var(--cor_verde_primaria_dense); */
 }
 
 .erro {
@@ -87,7 +84,7 @@ body {
 .card p,
 .card span {
     word-wrap: break-word;
-    color: var(--cor_primaria_dense) !important;
+    color: var(--cor_verde_primaria_dense) !important;
     /* margin: 0.2rem; */
 
 }
@@ -97,7 +94,7 @@ body {
     .card p,
     .card span {
         word-wrap: break-word;
-        color: var(--cor_primaria_dense) !important;
+        color: var(--cor_verde_primaria_dense) !important;
         /* margin: 0.2rem; */
 
         white-space: nowrap;
@@ -118,18 +115,18 @@ body {
 
 /* 
 span.card_header {
-    color: var(--cor_primaria_dense) !important;
+    color: var(--cor_verde_primaria_dense) !important;
 } */
 
 .card-text {
     margin-bottom: 0.5rem;
-    /* color: var(--cor_primaria_dense); */
+    /* color: var(--cor_verde_primaria_dense); */
 }
 
 /* cards-and */
 
 .navbar {
-    background-color: var(--cor_primaria_dark) !important;
+    background-color: var(--cor_verde_primaria_dark) !important;
 }
 
 .titulo {

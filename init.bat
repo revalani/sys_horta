@@ -1,3 +1,2 @@
-start "" C:/Users/renan/Documents/horta/Scripts/python.exe c:/Users/renan/Documents/horta/ardunino/gerador_de_dados.py  
-
-start "" C:/Users/renan/Documents/horta/Scripts/python.exe c:/Users/renan/Documents/horta/servidor/app.py
+start "" ./Scripts/python.exe ./ardunino/gerador_de_dados.py  
+start "" ./Scripts/python.exe ./servidor/app.py
