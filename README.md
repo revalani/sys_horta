@@ -56,7 +56,11 @@ design de referencia:
 
 
 
+<<<<<<< HEAD
 ## kanban Sys_horta
+=======
+## kanban
+>>>>>>> 1ef7440e4b4ca527a6b54a9509bbe49ab142751a
 
 #### pendentes
 - Site comercial 
@@ -118,6 +122,7 @@ design de referencia:
 		erro timezone do timestamp no update dos dados de sensor 
 
 ### fazendo 
+<<<<<<< HEAD
 - Site comercial 
     - WordPress
 - RPI
@@ -127,6 +132,9 @@ design de referencia:
 - Operacional
 - Erros
 - Operacional
+=======
+
+>>>>>>> 1ef7440e4b4ca527a6b54a9509bbe49ab142751a
 
 ### feito	
 - grafico e periodos de exibição
@@ -158,4 +166,8 @@ design de referencia:
 - Operacional
 
 - Erros
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ef7440e4b4ca527a6b54a9509bbe49ab142751a
 
